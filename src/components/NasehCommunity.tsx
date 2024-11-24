@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import Slider from "react-slick";
 import { FaGlobe, FaClock } from "react-icons/fa";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // Styled Components for the Naseh Community Section
 const CommunitySection = styled.section`
@@ -24,23 +27,41 @@ const CommunitySection = styled.section`
     }
   }
 
-  .community-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
+  .slick-slider {
     max-width: 1200px;
     margin: 0 auto;
 
-    @media (max-width: 1024px) {
-      grid-template-columns: repeat(3, 1fr);
+    .slick-arrow {
+      background-color: #1e3a8a;
+      color: white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+
+      &:hover {
+        background-color: #163e73;
+      }
     }
 
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(2, 1fr);
+    .slick-prev {
+      left: -50px;
     }
 
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
+    .slick-next {
+      right: -50px;
+    }
+
+    .slick-dots {
+      bottom: -30px;
+
+      li button:before {
+        font-size: 12px;
+        color: #1e3a8a;
+      }
     }
   }
 
@@ -51,6 +72,11 @@ const CommunitySection = styled.section`
     text-align: center;
     padding: 2rem;
     overflow: hidden;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: translateY(-5px); /* Slight lift on hover */
+    }
 
     .logo {
       width: 60px;
@@ -124,40 +150,68 @@ const NasehCommunity: React.FC = () => {
   const community = [
     {
       name: "Dawi Law Firm",
-      description: "I Provide Specialized Legal Consultations In The Field Of Companies.",
-      logo: "https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg", // Replace with actual logo paths
+      description:
+        "I Provide Specialized Legal Consultations In The Field Of Companies.",
+      logo: "https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg",
       language: "Arabic & English",
       experience: "10-15",
     },
     {
       name: "Saleh For Law",
-      description: "I Provide Specialized Legal Consultations In The Field Of Companies.",
+      description:
+        "I Provide Specialized Legal Consultations In The Field Of Companies.",
       logo: "https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg",
       language: "Arabic & English",
       experience: "10-15",
     },
     {
       name: "Al Ansari Law Firm",
-      description: "I Provide Specialized Legal Consultations In The Field Of Companies.",
+      description:
+        "I Provide Specialized Legal Consultations In The Field Of Companies.",
       logo: "https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg",
       language: "Arabic & English",
       experience: "10-15",
     },
     {
       name: "Dunne Law PLLC",
-      description: "I Provide Specialized Legal Consultations In The Field Of Companies.",
+      description:
+        "I Provide Specialized Legal Consultations In The Field Of Companies.",
       logo: "https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg",
       language: "Arabic & English",
       experience: "10-15",
     },
     {
       name: "Dunne Law Partners",
-      description: "I Provide Specialized Legal Consultations In The Field Of Companies.",
+      description:
+        "I Provide Specialized Legal Consultations In The Field Of Companies.",
       logo: "https://static.vecteezy.com/system/resources/previews/002/002/403/non_2x/man-with-beard-avatar-character-isolated-icon-free-vector.jpg",
       language: "Arabic & English",
       experience: "10-15",
     },
   ];
+
+  // Settings for the slider
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <CommunitySection id="naseh-community">
@@ -165,7 +219,7 @@ const NasehCommunity: React.FC = () => {
         <p>Lawfirm</p>
         <h2>Specialized lawyers around the clock</h2>
       </div>
-      <div className="community-grid">
+      <Slider {...settings}>
         {community.map((firm, index) => (
           <div className="community-card" key={index}>
             <div className="logo">
@@ -186,7 +240,7 @@ const NasehCommunity: React.FC = () => {
             <button>View Profile</button>
           </div>
         ))}
-      </div>
+      </Slider>
     </CommunitySection>
   );
 };

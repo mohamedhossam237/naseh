@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
+// Styled Components
 const NavbarWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -124,11 +125,17 @@ const MobileMenu = styled.div`
 
   @media (max-width: 768px) {
     display: flex;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 1rem;
   }
 `;
 
+// Navbar Component
 const Navbar: React.FC = () => {
-  const [isMobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
@@ -136,15 +143,21 @@ const Navbar: React.FC = () => {
 
   return (
     <NavbarWrapper>
+      {/* Logo Section */}
       <Logo>
-        <img src="https://naseh.qa/assets/naseh-logo.CpTfn_N7.svg" alt="Naseh Logo" />
+        <img
+          src="https://naseh.qa/assets/naseh-logo.CpTfn_N7.svg"
+          alt="Naseh Logo"
+        />
         <span>Naseh</span>
       </Logo>
 
+      {/* Hamburger Menu for Mobile */}
       <MenuToggle onClick={toggleMobileMenu}>
-        ☰ {/* Hamburger menu icon */}
+        {isMobileMenuOpen ? "✖" : "☰"} {/* Toggle between close and menu icon */}
       </MenuToggle>
 
+      {/* Links for Desktop */}
       <NavLinks>
         <a href="#home">Home</a>
         <a href="#lawfirm">Lawfirm</a>
@@ -153,11 +166,13 @@ const Navbar: React.FC = () => {
         <a href="#contact">Contact Us</a>
       </NavLinks>
 
+      {/* Action Buttons */}
       <Actions>
         <button>Book a Consultation</button>
         <button>AR</button>
       </Actions>
 
+      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <MobileMenu>
           <a href="#home">Home</a>

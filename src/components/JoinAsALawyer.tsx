@@ -4,30 +4,40 @@ import { FaCheckCircle } from "react-icons/fa";
 
 // Styled Components for JoinAsALawyer Section
 const JoinSection = styled.section`
-  background-color: #1e3a8a; /* Dark blue background */
+  background-color: #031b39; 
   color: white;
-  padding: 4rem 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 4rem 2rem;
 
   .join-container {
     max-width: 1200px;
-    width: 100%;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 
   .left-content {
     flex: 1;
-    position: relative;
+    display: flex;
+    justify-content: center;
 
     img {
       max-width: 100%;
       border-radius: 12px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      img {
+        width: 80%;
+      }
     }
   }
 
@@ -35,19 +45,25 @@ const JoinSection = styled.section`
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     h2 {
-      font-size: 2rem;
+      font-size: 2.25rem;
       font-weight: bold;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      color: #ffffff;
     }
 
     p {
       font-size: 1rem;
-      color: #d1d5db; /* Light gray for text */
+      color: #d1d5db; /* Light gray text */
       margin-bottom: 1.5rem;
-      line-height: 1.6;
+      line-height: 1.8;
+
+      &:first-of-type {
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #fbbf24; /* Golden color for heading */
+      }
     }
 
     .features {
@@ -67,14 +83,19 @@ const JoinSection = styled.section`
           font-size: 1.2rem;
         }
       }
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
     }
 
     .join-button {
       background-color: #fbbf24; /* Golden button */
-      color: #1e3a8a;
-      font-size: 1rem;
+      color: #031b39;
+      font-size: 1.1rem;
       font-weight: bold;
-      padding: 0.75rem 2rem;
+      padding: 0.8rem 2.5rem;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -93,7 +114,7 @@ const JoinAsALawyer: React.FC = () => {
       <div className="join-container">
         {/* Left Content - Background image */}
         <div className="left-content">
-          <img src="/images/naseh-lawyer-bg.png" alt="Naseh Background" />
+          <img src="https://i.ibb.co/2tN6fs9/Screenshot-2024-11-24-152501.png" alt="Naseh Background" />
         </div>
 
         {/* Right Content - Text and Features */}

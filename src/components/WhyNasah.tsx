@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const WhyNasahSection = styled.section`
-  background-color: #1e3a8a; /* Dark blue background */
+  background-color: #031b39; 
   padding: 4rem 1rem;
   position: relative;
 

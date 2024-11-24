@@ -9,7 +9,7 @@ const HeaderWrapper = styled.header`
 `;
 
 const HeroSection = styled.div`
-  background-color: #1e3a8a; /* Dark blue background */
+  background-color: #031b39;
   color: white;
   text-align: center;
   padding: 6rem 1rem;
@@ -19,9 +19,14 @@ const HeroSection = styled.div`
 
   /* Full-size logo as a background */
   background-image: url("https://naseh.qa/assets/naseh-logo.CpTfn_N7.svg");
-  background-size: 80%; /* Adjust size of the logo */
+  background-size: 80%;
   background-repeat: no-repeat;
   background-position: center;
+
+  @media (max-width: 768px) {
+    padding: 4rem 1rem;
+    background-size: 100%;
+  }
 `;
 
 const BlueOverlay = styled.div`
@@ -30,7 +35,7 @@ const BlueOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(30, 58, 138, 0.9); /* Semi-transparent blue overlay */
+  background-color: rgba(3, 27, 57, 0.9); /* Semi-transparent blue overlay */
   z-index: 15; /* Place it above the logo but below the content */
 `;
 
@@ -50,6 +55,10 @@ const HeroTitle = styled.h1`
   margin: 0;
   line-height: 1.25;
   padding-bottom: 1rem; /* Add padding below the title */
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const HeroText = styled.p`
@@ -60,6 +69,10 @@ const HeroText = styled.p`
   margin-right: auto;
   text-align: center;
   padding-bottom: 1rem; /* Add padding below the text */
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const HeroButton = styled.a`
@@ -76,6 +89,11 @@ const HeroButton = styled.a`
   &:hover {
     background-color: #f3f4f6;
   }
+
+  @media (max-width: 768px) {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const FooterLogos = styled.div`
@@ -85,18 +103,27 @@ const FooterLogos = styled.div`
   gap: 2rem;
 
   img {
-    height: 2.5rem;
+    height: 6rem;
+
+    @media (max-width: 768px) {
+      height: 4rem;
+    }
   }
 `;
 
 const UrgentBarWrapper = styled.div`
   position: absolute;
-  top: 50px; /* Positioned above the Navbar */
+  top: -10px; /* Positioned above the Navbar */
   left: 50%;
   transform: translateX(-50%);
   z-index: 60; /* Higher than the Navbar */
   width: 90%;
   max-width: 1200px;
+
+  @media (max-width: 768px) {
+    top: 10px;
+    width: 95%;
+  }
 `;
 
 const Header: React.FC = () => {
@@ -122,11 +149,21 @@ const Header: React.FC = () => {
           </HeroText>
           <HeroButton href="#read-more">Read More →</HeroButton>
         </HeroContent>
-        <FooterLogos>
-          <img src="/microsoft-startup-logo.png" alt="Microsoft for Startups" />
-          <img src="/qatar-ministry-logo.png" alt="Ministry of Communications" />
-        </FooterLogos>
       </HeroSection>
+      <FooterLogos>
+          <img
+            src="https://cdn.prod.website-files.com/663e1523beb298605ebc45d9/66659e7f0449ef4a4cd773d4_logo_microsoft_for_startups.png"
+            alt="Microsoft for Startups"
+          />
+          <img
+            src="https://www.mcit.gov.qa/sites/all/themes/mcit/logo.png"
+            alt="Ministry of Communications"
+          />
+          <img
+            src="https://qstp.org.qa/wp-content/uploads/2024/09/QSTP_Logo_colored-e1720330919282.png"
+            alt="Qatar Science and Technology Park"
+          />
+        </FooterLogos>
     </HeaderWrapper>
   );
 };
